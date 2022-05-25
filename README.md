@@ -1,20 +1,13 @@
 # SyslogForwarder
-Topology and Rational
-Syslog Forwarder Proxy Server is meant for collecting logs from those network and system appliances that cannot install filebeat on their own, and the logs collected will then forward to Log Central managed by CorpIT Security Team.
-
+## Topology and Rational
+Syslog Forwarder Proxy Server is meant for collecting logs from those network and system appliances that cannot install filebeat on their own, and the logs collected will then forward to Log Central.
 The common appliances that cannot installed filebeat included vCenter, Synology NAS, Switch, Firewall, ESXi and ...
 
-
-
-Topology Editable Link
-
-Prerequisite
-
-
-SysLog Forwarder Proxy Server Installation
+## SysLog Forwarder Proxy Server Installation
 You can install the SysLogForwarder Proxy using the BASH script by running the following command in the Ubuntu TACACS+ Server:
-
+```
 wget https://github.com/jychoy92/SyslogForwarder/raw/main/install.sh -O install.sh; bash install.sh
+```
 This script will prompt you for the required variables listed in the Required Variable Settings section.
 
 Variables
@@ -37,28 +30,32 @@ Variables
 |Servive|Purpose|Path|
 |-------------|-------------|-------------|
 |rsyslog|to configure the logs receptor and reception path. Log collection is use ruleset method configure here and sort to specific folder  in /data/var/log|/etc/rsyslog.conf|
--	to configure log rotation that capture by rsyslog in rsyslog receptor	/etc/logrotate.d/sys_log
-filebeat	to configure filebeat to forward received logs to remote logstash	
-/etc/filebeat/filebeat.yml
+|-|to configure log rotation that capture by rsyslog in rsyslog receptor|/etc/logrotate.d/sys_log|
+|filebeat|to configure filebeat to forward received logs to remote logstash|/etc/filebeat/filebeat.yml|
 
-Syslog Forwarder Proxy Troubleshooting
-Control Syslog Forwarder Proxy required services
+## Syslog Forwarder Proxy Troubleshooting
+### Control Syslog Forwarder Proxy required services
+```
 ### rsyslog service
 sudo systemctl status rsyslog
 sudo systemctl start rsyslog
 sudo systemctl stop rsyslog
 sudo systemctl restart rsyslog
- 
+
 ### FileBeat Service
 sudo systemctl status filebeat
 sudo systemctl start filebeat
 sudo systemctl stop filebeat
 sudo systemctl restart filebeat
-Verify FileBeat Config is configured correctly
+```
+
+### Verify FileBeat Config is configured correctly
+```
 filebeat test config
 filebeat test output
-References
-How to Setup Central Logging Server with Rsyslog in Linux
+```
 
+## References
+How to Setup Central Logging Server with Rsyslog in Linux
 Filebeat Log Shipper
 
