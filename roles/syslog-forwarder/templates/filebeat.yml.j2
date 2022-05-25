@@ -18,8 +18,8 @@ output:
     hosts: ["{{logstach_server1}}:5044",   # Logstash_1
             {% if logstach_server2 != "" -%}
             "{{logstach_server2}}:5044"   # Logstash_2
-            {%- endif %}
-           ]
+            {% endif %}
+            ]
     loadbalance: true
     worker: 8
     backoff.init: 1800s
