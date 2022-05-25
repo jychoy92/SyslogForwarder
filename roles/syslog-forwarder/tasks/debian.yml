@@ -1,0 +1,60 @@
+---
+- name: Install syslog forwarder required packages
+  apt:
+    name: "{{ syslog_req_packages }}"
+    update_cache: yes
+  register: apt_results
+  until: not apt_results.failed
+
+- name: Create Directories for Logs Folder
+  file:
+    path: '{{ item }}'
+    state: directory
+    mode: '0755'
+  with_items:
+    - "/data/var/log/firewall"
+    - "/data/var/log/switches"
+    - "/data/var/log/wlc"
+    - "/data/var/log/synology"
+    - "/data/var/log/vcenter"
+
+- name: Configure rsyslog config file
+  template:
+    src: templates/rsyslog.conf.j2
+    dest: /etc/rsyslog.conf
+    mode: 0644
+
+# ip_wanfirewall1
+# ip_wanfirewall2
+# ip_corefirewall1
+# ip_corefirewall2
+# ip_wlc1
+# ip_wlc2
+# ip_switches
+# ip_synology
+# ip_vcenter
+
+- name: Configure rsyslog config file
+  copy:
+    src: sys_log
+    dest: /etc/logrotate.d/sys_log
+    mode: 0644
+
+- name: Configure filebeat config file
+  template:
+    src: templates/filebeat.yml.j2
+    dest: /etc/filebeat/filebeat.yml
+    mode: 0644
+
+# logstach_server1
+# logstach_server2
+# local_server_ip
+# region_letters
+
+- name: Enable the required syslog services
+  systemd:
+    name: "{{ syslog_req_services }}"
+    state: started
+    enabled: yes
+
+

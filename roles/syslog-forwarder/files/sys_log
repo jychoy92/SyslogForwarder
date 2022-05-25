@@ -1,0 +1,12 @@
+/data/var/log/*/*/*.log
+{
+rotate 2
+daily
+ifempty
+missingok
+dateext
+sharedscripts
+postrotate
+/bin/systemctl restart rsyslog >/dev/null 2>&1 || true
+endscript
+}

@@ -1,0 +1,8 @@
+---
+syslog_req_packages:
+  - rsyslog
+  - filebeat
+
+syslog_req_services:
+  - rsyslog
+  - filebeat

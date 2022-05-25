@@ -1,0 +1,113 @@
+# /etc/rsyslog.conf configuration file for rsyslog
+#
+# For more information install rsyslog-doc and see
+# /usr/share/doc/rsyslog-doc/html/configuration/index.html
+#
+# Default logging rules can be found in /etc/rsyslog.d/50-default.conf
+
+
+#################
+#### MODULES ####
+#################
+
+module(load="imuxsock") # provides support for local system logging
+#module(load="immark")  # provides --MARK-- message capability
+
+# provides UDP syslog reception
+module(load="imudp")
+input(type="imudp" port="514")
+
+# provides TCP syslog reception
+module(load="imtcp")
+input(type="imtcp" port="514")
+
+# provides kernel logging support and enable non-kernel klog messages
+module(load="imklog" permitnonkernelfacility="on")
+
+###########################
+#### GLOBAL DIRECTIVES ####
+###########################
+
+#
+# Use traditional timestamp format.
+# To enable high precision timestamps, comment out the following line.
+#
+$ActionFileDefaultTemplate RSYSLOG_TraditionalFileFormat
+
+# Filter duplicated messages
+$RepeatedMsgReduction on
+
+#
+# Set the default permissions for all log files.
+#
+#$FileOwner syslog
+#$FileGroup adm
+#$FileCreateMode 0640
+#$DirCreateMode 0755
+#$Umask 0022
+#$PrivDropToUser syslog
+#$PrivDropToGroup syslog
+
+#
+# Where to place spool and state files
+#
+$WorkDirectory /var/spool/rsyslog
+
+#
+# Include all config files in /etc/rsyslog.d/
+#
+$IncludeConfig /etc/rsyslog.d/*.conf
+
+{% if ip_wanfirewall1 is defined %}
+$template WFW1,"/data/var/log/firewall/%FROMHOST-IP%/syslog.log"
+if $fromhost-ip startswith '{{ip_wanfirewall1}}' then ?WFW1
+& stop
+{% endif %}
+
+{% if ip_wanfirewall2 is defined %}
+$template WFW2,"/data/var/log/firewall/%FROMHOST-IP%/syslog.log"
+if $fromhost-ip startswith '{{ip_wanfirewall2}}' then ?WFW2
+& stop
+{% endif %}
+
+{% if ip_corefirewall1 is defined %}
+$template CFW1,"/data/var/log/firewall/%FROMHOST-IP%/syslog.log"
+if $fromhost-ip startswith '{{ip_corefirewall1}}' then ?CFW1
+& stop
+{% endif %}
+
+{% if ip_corefirewall2 is defined %}
+$template CFW2,"/data/var/log/firewall/%FROMHOST-IP%/syslog.log"
+if $fromhost-ip startswith '{{ip_corefirewall2}}' then ?CFW2
+& stop
+{% endif %}
+
+{% if ip_wlc1 is defined %}
+$template WLC1,"/data/var/log/wlc/%FROMHOST-IP%/syslog.log"
+if $fromhost-ip startswith '{{ip_wlc1}}' then ?WLC1
+& stop
+{% endif %}
+
+{% if ip_wlc2 is defined %}
+$template WLC2,"/data/var/log/wlc/%FROMHOST-IP%/syslog.log"
+if $fromhost-ip startswith '{{ip_wlc2}}' then ?WLC2
+& stop
+{% endif %}
+
+{% if ip_switches is defined %}
+$template switches,"/data/var/log/switches/%FROMHOST-IP%/syslog.log"
+if $fromhost-ip startswith '{{ip_switches}}' then ?switches
+& stop
+{% endif %}
+
+{% if ip_synology is defined %}
+$template synology,"/data/var/log/synology/%FROMHOST-IP%/syslog.log"
+if $fromhost-ip startswith '{{ip_synology}}' then ?synology
+& stop
+{% endif %}
+
+{% if ip_vcenter is defined %}
+$template vcenter,"/data/var/log/vcenter/%FROMHOST-IP%/syslog.log"
+if $fromhost-ip startswith '{{ip_vcenter}}' then ?vcenter
+& stop
+{% endif %}

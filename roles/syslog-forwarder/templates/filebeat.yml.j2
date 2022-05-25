@@ -1,0 +1,26 @@
+filebeat:
+  inputs:
+  - type: log
+    paths:
+      - /data/var/log/*/*/syslog.log
+    fields:
+      region: {{region_letters}}
+    fields_under_root: true
+    ignore_older: 6h
+    close_timeout: 5m
+
+name: {{ansible_default_ipv4.address}}
+shipper:
+    name: {{ansible_default_ipv4.address}}
+
+output:
+  logstash:
+    hosts: ["{{logstach_server1}}:5044",   # Logstash_1
+            {% if logstach_server2 is defined %}
+            "{{logstach_server2}}:5044"   # Logstash_2
+            {% endif %}
+           ]
+    loadbalance: true
+    worker: 8
+    backoff.init: 1800s
+    backoff.max: 1800s
