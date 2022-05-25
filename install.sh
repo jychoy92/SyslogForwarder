@@ -58,48 +58,38 @@ function start_SyslogForwarder_installation() {
     echo -e "${GREEN}Country Code Reference: https://www.iban.com/country-codes ${GREEN}"
     until [[ $region_letters ]]; do read -p "> " region_letters; done
 
-    echo -e "${BLUE}Logstash Server 1 URL (e.g.: logstash1.siem.cit.xxx.com )${NORMAL}"
+    echo -e "${BLUE}Logstash Server 1 URL (e.g.: logstash1.siem.cit.sea.com )${NORMAL}"
     until [[ $logstach_server1 ]]; do read -p "> " logstach_server1; done
 
-    echo -e "${BLUE}Logstash Server 2 URL (e.g.: logstash2.siem.cit.xxx.com )${NORMAL}"
-    echo -e "${GREEN}Leave blank if no input ${GREEN}"
-    read -p "> " logstach_server1;
+    echo -e "${BLUE}Logstash Server 2 URL (e.g.: logstash2.siem.cit.sea.com )${NORMAL} ${GREEN}Leave blank if no input ${GREEN}"
+    read -p "> " logstach_server2;
 
-    echo -e "${BLUE}WAN Firewall 01 IP (e.g.: 10.2.0.3 )${NORMAL}"
-    echo -e "${GREEN}Leave blank if no input ${GREEN}"
-    until [[ $ip_wanfirewall1 ]]; do read -p "> " ip_wanfirewall1; done
+    echo -e "${BLUE}WAN Firewall 01 IP (e.g.: 10.2.0.3 )${NORMAL} ${GREEN}Leave blank if no input ${GREEN}"
+    read -p "> " ip_wanfirewall1;
 
-    echo -e "${BLUE}WAN Firewall 02 IP (e.g.: 10.2.0.4 )${NORMAL}"
-    echo -e "${GREEN}Leave blank if no input ${GREEN}"
-    until [[ $ip_wanfirewall2 ]]; do read -p "> " ip_wanfirewall2; done
+    echo -e "${BLUE}WAN Firewall 02 IP (e.g.: 10.2.0.4 )${NORMAL} ${GREEN}Leave blank if no input ${GREEN}"
+    read -p "> " ip_wanfirewall2;
 
-    echo -e "${BLUE}Core Firewall 01 IP (e.g.: 10.2.0.5 )${NORMAL}"
-    echo -e "${GREEN}Leave blank if no input ${GREEN}"
-    until [[ $ip_corefirewall1 ]]; do read -p "> " ip_corefirewall1; done
+    echo -e "${BLUE}Core Firewall 01 IP (e.g.: 10.2.0.5 )${NORMAL} ${GREEN}Leave blank if no input ${GREEN}"
+    read -p "> " ip_corefirewall1;
 
-    echo -e "${BLUE}Core Firewall 02 IP (e.g.: 10.2.0.6 )${NORMAL}"
-    echo -e "${GREEN}Leave blank if no input ${GREEN}"
-    until [[ $ip_corefirewall2 ]]; do read -p "> " ip_corefirewall2; done
+    echo -e "${BLUE}Core Firewall 02 IP (e.g.: 10.2.0.6 )${NORMAL} ${GREEN}Leave blank if no input ${GREEN}"
+    read -p "> " ip_corefirewall2;
 
-    echo -e "${BLUE}WLC 01 IP (e.g.: 10.2.0.11 )${NORMAL}"
-    echo -e "${GREEN}Leave blank if no input ${GREEN}"
-    until [[ $ip_wlc1 ]]; do read -p "> " ip_wlc1; done
+    echo -e "${BLUE}WLC 01 IP (e.g.: 10.2.0.11 )${NORMAL} ${GREEN}Leave blank if no input ${GREEN}"
+    read -p "> " ip_wlc1;
 
-    echo -e "${BLUE}WLC 02 IP (e.g.: 10.2.0.12 )${NORMAL}"
-    echo -e "${GREEN}Leave blank if no input ${GREEN}"
-    until [[ $ip_wlc2 ]]; do read -p "> " ip_wlc2; done
+    echo -e "${BLUE}WLC 02 IP (e.g.: 10.2.0.12 )${NORMAL} ${GREEN}Leave blank if no input ${GREEN}"
+    read -p "> " ip_wlc2;
 
-    echo -e "${BLUE}Switches IP (Put the range using wildcard, e.g.: 10.2.0.* )${NORMAL}"
-    echo -e "${GREEN}Leave blank if no input ${GREEN}"
-    until [[ $ip_switches ]]; do read -p "> " ip_switches; done
+    echo -e "${BLUE}Switches IP (Put the range using wildcard, e.g.: 10.2.0.* )${NORMAL} ${GREEN}Leave blank if no input ${GREEN}"
+    read -p "> " ip_switches;
 
-    echo -e "${BLUE}Synology NAS IP (e.g.: 10.2.11.60 )${NORMAL}"
-    echo -e "${GREEN}Leave blank if no input ${GREEN}"
-    until [[ $ip_synology ]]; do read -p "> " ip_synology; done
+    echo -e "${BLUE}Synology NAS IP (e.g.: 10.2.11.60 )${NORMAL} ${GREEN}Leave blank if no input ${GREEN}"
+    read -p "> " ip_synology;
 
-    echo -e "${BLUE}vCenter IP (e.g.: 10.2.11.70 )${NORMAL}"
-    echo -e "${GREEN}Leave blank if no input ${GREEN}"
-    until [[ $ip_vcenter ]]; do read -p "> " ip_vcenter; done
+    echo -e "${BLUE}vCenter IP (e.g.: 10.2.11.70 )${NORMAL} ${GREEN}Leave blank if no input ${GREEN}"
+    read -p "> " ip_vcenter;
 
     echo ''
 
