@@ -58,49 +58,49 @@ $WorkDirectory /var/spool/rsyslog
 #
 $IncludeConfig /etc/rsyslog.d/*.conf
 
-{% if ip_wanfirewall1 is defined %}
+{% if ip_wanfirewall1 != "" %}
 $template WFW1,"/data/var/log/firewall/%FROMHOST-IP%/syslog.log"
 if $fromhost-ip startswith '{{ip_wanfirewall1}}' then ?WFW1
 & stop
 {% endif %}
 
-{% if ip_wanfirewall2 is defined %}
+{% if ip_wanfirewall2 != "" %}
 $template WFW2,"/data/var/log/firewall/%FROMHOST-IP%/syslog.log"
 if $fromhost-ip startswith '{{ip_wanfirewall2}}' then ?WFW2
 & stop
 {% endif %}
 
-{% if ip_corefirewall1 is defined %}
+{% if ip_corefirewall1 != "" %}
 $template CFW1,"/data/var/log/firewall/%FROMHOST-IP%/syslog.log"
 if $fromhost-ip startswith '{{ip_corefirewall1}}' then ?CFW1
 & stop
 {% endif %}
 
-{% if ip_corefirewall2 is defined %}
+{% if ip_corefirewall2 != "" %}
 $template CFW2,"/data/var/log/firewall/%FROMHOST-IP%/syslog.log"
 if $fromhost-ip startswith '{{ip_corefirewall2}}' then ?CFW2
 & stop
 {% endif %}
 
-{% if ip_wlc1 is defined %}
+{% if ip_wlc1 != "" %}
 $template WLC1,"/data/var/log/wlc/%FROMHOST-IP%/syslog.log"
 if $fromhost-ip startswith '{{ip_wlc1}}' then ?WLC1
 & stop
 {% endif %}
 
-{% if ip_wlc2 is defined %}
+{% if ip_wlc2 != "" %}
 $template WLC2,"/data/var/log/wlc/%FROMHOST-IP%/syslog.log"
 if $fromhost-ip startswith '{{ip_wlc2}}' then ?WLC2
 & stop
 {% endif %}
 
-{% if ip_switches is defined %}
+{% if ip_switches != "" %}
 $template switches,"/data/var/log/switches/%FROMHOST-IP%/syslog.log"
 if $fromhost-ip startswith '{{ip_switches}}' then ?switches
 & stop
 {% endif %}
 
-{% if ip_synology is defined %}
+{% if ip_synology != "" %}
 $template synology,"/data/var/log/synology/%FROMHOST-IP%/syslog.log"
 if $fromhost-ip startswith '{{ip_synology}}' then ?synology
 & stop
