@@ -18,12 +18,13 @@ wget https://github.com/jychoy92/SyslogForwarder/raw/main/install.sh -O install.
 This script will prompt you for the required variables listed in the Required Variable Settings section.
 
 Variables
+|Variable|Description|Required|
+|-------------|-------------|-------------|
+|region_letters|Region Alpha-2 Code in small letter|Region code that not listed below please refer to https://www.iban.com/country-codes|Yes|
 
 
-region_letters	
-Region Alpha-2 Code in small letter
 
-Region code that not listed below please refer to https://www.iban.com/country-codes
+
 
 China Shanghai	cn-sh
 China Shenzhen	cn-sz
