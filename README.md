@@ -21,44 +21,22 @@ Variables
 |Variable|Description|Required|
 |-------------|-------------|-------------|
 |region_letters|Region Alpha-2 Code in small letter|Region code that not listed below please refer to https://www.iban.com/country-codes|Yes|
+|logstach_server1|Remote Log Central LogStash IP 1|Yes|
+|logstach_server2|Remote Log Central LogStash IP 2|No|
+|ip_wanfirewall1|WAN Firewall 1 IP. FortiGate, PalaAlto and etc.	No
+|ip_wanfirewall2|WAN Firewall 2 IP. FortiGate, PalaAlto and etc.	No
+|ip_corefirewall1|Server Farm Core Firewall 1 IP. ASA and etc.	No
+|ip_corefirewall2|Server Farm Core Firewall 1 IP. ASA and etc.	No
+|ip_wlc1|WLC 1 IP|No|
+|ip_wlc2|WLC 2 IP|No|
+|ip_switches|Switches IP Range|No|
+|ip_synology|Synology NAS IP|No|
+|ip_vcenter|vCenter IP|No|
 
-
-
-
-
-China Shanghai	cn-sh
-China Shenzhen	cn-sz
-Singapore	sg
-Malaysia	my
-Philippine	ph
-Thailand	th
-Taiwan ROC	tw
-Vietnam HCM	vn-hcm
-Vietnam HN	vn-hn
-Brazil	br
-Poland	pl
-
-Yes
-logstach_server1	Remote Log Central LogStash IP 1	Yes
-logstach_server2	Remote Log Central LogStash IP 2	No
-ip_wanfirewall1	WAN Firewall 1 IP. FortiGate, PalaAlto and etc.	No
-ip_wanfirewall2	WAN Firewall 2 IP. FortiGate, PalaAlto and etc.	No
-ip_corefirewall1	Server Farm Core Firewall 1 IP. ASA and etc.	No
-ip_corefirewall2	Server Farm Core Firewall 1 IP. ASA and etc.	No
-ip_wlc1	WLC 1 IP	No
-ip_wlc2	WLC 2 IP	No
-ip_switches	Switches IP Range	No
-ip_synology
-
-Synology NAS IP	No
-ip_vcenter	vCenter IP	No
-Configuration Files Involve during the Installation
-rsyslog	
-to configure the logs receptor and reception path
-
-log collection is use ruleset method configure here and sort to specific folder  in /data/var/log
-
-/etc/rsyslog.conf
+##Configuration Files Involve during the Installation
+|Servive|Purpose|Path|
+|-------------|-------------|-------------|
+|rsyslog|to configure the logs receptor and reception path \nlog collection is use ruleset method configure here and sort to specific folder  in /data/var/log|/etc/rsyslog.conf|
 -	to configure log rotation that capture by rsyslog in rsyslog receptor	/etc/logrotate.d/sys_log
 filebeat	to configure filebeat to forward received logs to remote logstash	
 /etc/filebeat/filebeat.yml
