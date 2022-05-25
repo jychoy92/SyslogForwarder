@@ -61,9 +61,9 @@ function start_SyslogForwarder_installation() {
     echo -e "${BLUE}Logstash Server 1 URL (e.g.: logstash1.siem.cit.xxx.com )${NORMAL}"
     until [[ $logstach_server1 ]]; do read -p "> " logstach_server1; done
 
-    echo -e "${BLUE}Logstash Server 2 URL (e.g.: logstash1.siem.cit.xxx.com )${NORMAL}"
+    echo -e "${BLUE}Logstash Server 2 URL (e.g.: logstash2.siem.cit.xxx.com )${NORMAL}"
     echo -e "${GREEN}Leave blank if no input ${GREEN}"
-    until [[ $logstach_server2 ]]; do read -p "> " logstach_server2; done
+    read -p "> " logstach_server1;
 
     echo -e "${BLUE}WAN Firewall 01 IP (e.g.: 10.2.0.3 )${NORMAL}"
     echo -e "${GREEN}Leave blank if no input ${GREEN}"
