@@ -56,6 +56,5 @@ filebeat test output
 ```
 
 ## References
-How to Setup Central Logging Server with Rsyslog in Linux
-Filebeat Log Shipper
+* [test](https://www.tecmint.com/install-rsyslog-centralized-logging-in-centos-ubuntu/#:~:text=Once%20rsyslog%20installed%2C%20you%20need,status%20with%20the%20systemctl%20command.&text=The%20main%20rsyslog%20configuration%20file%20is%20located%20at%20%2Fetc%2Frsyslog)
 
