@@ -10,7 +10,7 @@ wget https://github.com/jychoy92/SyslogForwarder/raw/main/install.sh -O install.
 ```
 This script will prompt you for the required variables listed in the Required Variable Settings section.
 
-Variables
+### Variables
 |Variable|Description|Required|
 |-------------|-------------|-------------|
 |region_letters|Region Alpha-2 Code in small letter|Region code that not listed below please refer to https://www.iban.com/country-codes|Yes|
@@ -26,7 +26,7 @@ Variables
 |ip_synology|Synology NAS IP|No|
 |ip_vcenter|vCenter IP|No|
 
-##Configuration Files Involve during the Installation
+## Configuration Files Involve during the Installation
 |Servive|Purpose|Path|
 |-------------|-------------|-------------|
 |rsyslog|to configure the logs receptor and reception path. Log collection is use ruleset method configure here and sort to specific folder  in /data/var/log|/etc/rsyslog.conf|
