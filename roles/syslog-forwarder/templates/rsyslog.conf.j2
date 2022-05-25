@@ -106,7 +106,7 @@ if $fromhost-ip startswith '{{ip_synology}}' then ?synology
 & stop
 {% endif %}
 
-{% if ip_vcenter is defined %}
+{% if ip_vcenter != "" %}
 $template vcenter,"/data/var/log/vcenter/%FROMHOST-IP%/syslog.log"
 if $fromhost-ip startswith '{{ip_vcenter}}' then ?vcenter
 & stop
