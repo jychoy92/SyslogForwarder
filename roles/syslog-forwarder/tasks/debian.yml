@@ -39,7 +39,7 @@
 - name: Enable the required syslog services
   service:
     name: "{{ item }}"
-    state: started
+    state: restarted
     enabled: yes
   with_items: "{{ syslog_req_services }}"
 
