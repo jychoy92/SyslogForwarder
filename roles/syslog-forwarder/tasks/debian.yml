@@ -42,5 +42,3 @@
     state: restarted
     enabled: yes
   with_items: "{{ syslog_req_services }}"
-
-
