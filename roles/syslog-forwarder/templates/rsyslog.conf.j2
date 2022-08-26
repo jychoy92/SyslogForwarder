@@ -94,12 +94,6 @@ if $fromhost-ip startswith '{{ip_wlc2}}' then ?WLC2
 & stop
 {% endif %}
 
-{% if ip_switches != "" %}
-$template switches,"/data/var/log/switches/%FROMHOST-IP%/syslog.log"
-if $fromhost-ip startswith '{{ip_switches}}' then ?switches
-& stop
-{% endif %}
-
 {% if ip_synology != "" %}
 $template synology,"/data/var/log/synology/%FROMHOST-IP%/syslog.log"
 if $fromhost-ip startswith '{{ip_synology}}' then ?synology
@@ -109,5 +103,11 @@ if $fromhost-ip startswith '{{ip_synology}}' then ?synology
 {% if ip_vcenter != "" %}
 $template vcenter,"/data/var/log/vcenter/%FROMHOST-IP%/syslog.log"
 if $fromhost-ip startswith '{{ip_vcenter}}' then ?vcenter
+& stop
+{% endif %}
+
+{% if ip_switches != "" %}
+$template switches,"/data/var/log/switches/%FROMHOST-IP%/syslog.log"
+if $fromhost-ip startswith '{{ip_switches}}' then ?switches
 & stop
 {% endif %}
