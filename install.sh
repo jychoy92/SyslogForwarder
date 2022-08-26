@@ -82,7 +82,7 @@ function start_SyslogForwarder_installation() {
     echo -e "${BLUE}WLC 02 IP (e.g.: 10.2.0.12 )${NORMAL} ${GREEN}Leave blank if no input ${GREEN}"
     read -p "> " ip_wlc2;
 
-    echo -e "${BLUE}Switches IP (Put the range using wildcard, e.g.: 10.2.0.* )${NORMAL} ${GREEN}Leave blank if no input ${GREEN}"
+    echo -e "${BLUE}Switches IP (Put prefix of the range, e.g.: put 10.1.1. if switches range is 10.1.1.0-265 )${NORMAL} ${GREEN}Leave blank if no input ${GREEN}"
     read -p "> " ip_switches;
 
     echo -e "${BLUE}Synology NAS IP (e.g.: 10.2.11.60 )${NORMAL} ${GREEN}Leave blank if no input ${GREEN}"
