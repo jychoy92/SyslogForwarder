@@ -29,6 +29,12 @@
     src: sys_log
     dest: /etc/logrotate.d/sys_log
     mode: 0644
+    
+- name: Configure Default Rsyslog Setting
+  copy:
+    src: 50-default.conf
+    dest: /etc/rsyslog.d/50-default.conf
+    mode: 0644
 
 - name: Configure filebeat config file
   template:
